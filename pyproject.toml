@@ -1,0 +1,18 @@
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --html=reports/report.html --self-contained-html"
+markers = [
+    "smoke: tests rapides de non-regression",
+    "worker: tests de l'espace travailleur (connecte)",
+    "flow: scenarios bout en bout composes de flux reutilisables",
+    "navigation: tests de navigation des pages publiques",
+    "keyword: scenarios ecrits en mots-cles (JSON), prepares pour une interface QA future",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "N"]

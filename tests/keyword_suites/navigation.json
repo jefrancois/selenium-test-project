@@ -1,0 +1,20 @@
+[
+  {
+    "id": "home_header_link_to_search",
+    "description": "Depuis l'accueil, le lien 'Recherche' du header mene a /recherche.",
+    "steps": [
+      {"keyword": "open_page", "page": "HomePage"},
+      {"keyword": "click_header_link", "href": "/recherche"},
+      {"keyword": "assert_current_path", "path": "/recherche"}
+    ]
+  },
+  {
+    "id": "home_switches_language_to_english",
+    "description": "La langue choisie dans la barre du haut passe en anglais.",
+    "steps": [
+      {"keyword": "open_page", "page": "HomePage"},
+      {"keyword": "switch_language", "lang": "en"},
+      {"keyword": "assert_language_active", "lang": "en"}
+    ]
+  }
+]

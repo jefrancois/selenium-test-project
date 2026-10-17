@@ -1,0 +1,13 @@
+[
+  {
+    "id": "login_then_logout",
+    "description": "Connexion puis deconnexion d'un travailleur.",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "assert_logged_in"},
+      {"keyword": "log_out"},
+      {"keyword": "assert_current_path", "path": "/login"},
+      {"keyword": "assert_logged_out"}
+    ]
+  }
+]
