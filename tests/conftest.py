@@ -26,7 +26,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     parser.addoption("--browser", help="chrome | firefox | edge (ecrase BROWSER)")
     parser.addoption("--headed", action="store_true", help="Navigateur avec interface")
 
-
+#test ok juste un commentaire
 def pytest_html_report_title(report) -> None:
     report.title = "On Bricole - Rapport de tests UI"
 
