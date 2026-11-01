@@ -5,5 +5,3 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 reports/
-performance/reports/
-.venv-perf/
