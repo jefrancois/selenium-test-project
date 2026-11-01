@@ -1,0 +1,36 @@
+[
+  {
+    "id": "worker_profile_shows_all_tabs",
+    "description": "Le profil travailleur affiche ses 4 sections (Informations, Disponibilites, Parametres, Verification).",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "open_page", "page": "WorkerProfilePage"},
+      {"keyword": "assert_heading_contains", "text": "Mon profil"},
+      {"keyword": "assert_profile_tab_visible", "tab": "Informations personnelles"},
+      {"keyword": "assert_profile_tab_visible", "tab": "Disponibilités"},
+      {"keyword": "assert_profile_tab_visible", "tab": "Paramètres du compte"},
+      {"keyword": "assert_profile_tab_visible", "tab": "Vérification d’identité"}
+    ]
+  },
+  {
+    "id": "worker_password_change_form_is_available",
+    "description": "L'onglet 'Parametres du compte' expose le formulaire de changement de mot de passe (non soumis).",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "open_page", "page": "WorkerProfilePage"},
+      {"keyword": "click_profile_tab", "tab": "Paramètres du compte"},
+      {"keyword": "assert_password_form_visible"}
+    ]
+  },
+  {
+    "id": "worker_identity_verification_form_is_available",
+    "description": "L'onglet 'Verification d'identite' affiche le statut verifie et le formulaire de televersement (non soumis).",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "open_page", "page": "WorkerProfilePage"},
+      {"keyword": "click_profile_tab", "tab": "Vérification d’identité"},
+      {"keyword": "assert_identity_verification_form_visible"},
+      {"keyword": "assert_identity_item_verified", "item": "Identité (permis)"}
+    ]
+  }
+]

@@ -21,3 +21,7 @@ class BasePage(ElementActions):
         url = f"{self.base_url}/{path.lstrip('/')}"
         log.info("Ouverture de %s", url)
         self.driver.get(url)
+
+    @property
+    def body_text(self) -> str:
+        return self.driver.find_element("tag name", "body").text

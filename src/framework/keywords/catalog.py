@@ -37,6 +37,19 @@ def switch_language(ctx: KeywordContext, *, lang: str) -> None:
     ctx.page.language.switch_to(lang)
 
 
+# --- profil -------------------------------------------------------------
+
+
+@keyword("click_profile_tab")
+def click_profile_tab(ctx: KeywordContext, *, tab: str) -> None:
+    ctx.page.tabs.click(tab)
+
+
+@keyword("open_new_request_wizard")
+def open_new_request_wizard(ctx: KeywordContext) -> None:
+    ctx.page.open_new_request_wizard()
+
+
 # --- authentification -----------------------------------------------------
 
 
@@ -87,3 +100,42 @@ def assert_logged_in(ctx: KeywordContext) -> None:
 @keyword("assert_logged_out")
 def assert_logged_out(ctx: KeywordContext) -> None:
     assert ctx.page.user_menu.is_signed_out(), "une session est toujours active"
+
+
+@keyword("assert_page_contains_text")
+def assert_page_contains_text(ctx: KeywordContext, *, text: str) -> None:
+    assert text in ctx.page.body_text, f"'{text}' absent de la page"
+
+
+@keyword("assert_search_form_visible")
+def assert_search_form_visible(ctx: KeywordContext) -> None:
+    assert ctx.page.has_search_form(), "formulaire de recherche absent"
+
+
+@keyword("assert_profile_tab_visible")
+def assert_profile_tab_visible(ctx: KeywordContext, *, tab: str) -> None:
+    assert ctx.page.tabs.is_present(tab), f"onglet '{tab}' introuvable"
+
+
+@keyword("assert_password_form_visible")
+def assert_password_form_visible(ctx: KeywordContext) -> None:
+    assert ctx.page.password.is_form_visible(), (
+        "formulaire de changement de mot de passe absent"
+    )
+
+
+@keyword("assert_identity_verification_form_visible")
+def assert_identity_verification_form_visible(ctx: KeywordContext) -> None:
+    assert ctx.page.identity_verification.is_upload_form_visible(), (
+        "formulaire de verification d'identite absent"
+    )
+
+
+@keyword("assert_identity_item_verified")
+def assert_identity_item_verified(ctx: KeywordContext, *, item: str) -> None:
+    assert ctx.page.identity_verification.is_verified(item), f"'{item}' non verifie"
+
+
+@keyword("assert_service_step_visible")
+def assert_service_step_visible(ctx: KeywordContext) -> None:
+    assert ctx.page.is_service_step_visible(), "etape 'Service' du formulaire absente"
