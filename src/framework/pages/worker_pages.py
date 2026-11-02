@@ -7,6 +7,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from framework.components.layout import WorkerNavBar
 from framework.components.profile_sections import (
     IdentitySection,
+    IdentityVerificationSection,
+    PasswordSection,
     PreferencesSection,
     ProfileTabs,
 )
@@ -91,12 +93,18 @@ class WorkerProfilePage(WorkerPage):
         tabs: ProfileTabs | None = None,
         identity: IdentitySection | None = None,
         preferences: PreferencesSection | None = None,
+        password: PasswordSection | None = None,
+        identity_verification: IdentityVerificationSection | None = None,
         **components,
     ) -> None:
         super().__init__(driver, base_url, timeout, **components)
         self.tabs = tabs or ProfileTabs(driver, timeout)
         self.identity = identity or IdentitySection(driver, timeout)
         self.preferences = preferences or PreferencesSection(driver, timeout)
+        self.password = password or PasswordSection(driver, timeout)
+        self.identity_verification = identity_verification or IdentityVerificationSection(
+            driver, timeout
+        )
 
     def public_profile_href(self) -> str:
         return self.attribute_of(self._PUBLIC_PROFILE, "href") or ""
@@ -132,6 +140,26 @@ class WorkerPlanPage(WorkerPage):
 
     def upgrade_buttons(self) -> list[str]:
         return self.texts_of((By.CSS_SELECTOR, "main button"))
+
+
+class WorkerRequestsPage(WorkerPage):
+    """Demandes publiees par le travailleur (« Mes demandes »)."""
+
+    path = "/worker/demandes"
+
+    _ACTION_BUTTONS = (By.CSS_SELECTOR, "main button")
+    _WIZARD_HEADINGS = (By.CSS_SELECTOR, "main h1")
+
+    def open_new_request_wizard(self) -> None:
+        """Ouvre l'etape 1 du formulaire (choix du service), sans jamais publier."""
+        for button in self.find_all(self._ACTION_BUTTONS):
+            if button.text.strip() == "Nouvelle demande":
+                button.click()
+                return
+        raise ValueError("Bouton 'Nouvelle demande' introuvable")
+
+    def is_service_step_visible(self) -> bool:
+        return "Quel service vous faut-il ?" in self.texts_of(self._WIZARD_HEADINGS)
 
 
 class WorkerNotificationsPage(WorkerPage):

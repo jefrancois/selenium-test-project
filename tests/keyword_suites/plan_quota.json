@@ -1,0 +1,12 @@
+[
+  {
+    "id": "worker_plan_describes_monthly_quota",
+    "description": "Le forfait Occasionnel precise le quota par jeton ; les forfaits payants annoncent des candidatures illimitees.",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "open_page", "page": "WorkerPlanPage"},
+      {"keyword": "assert_page_contains_text", "text": "jeton/candidature"},
+      {"keyword": "assert_page_contains_text", "text": "Candidatures illimitées"}
+    ]
+  }
+]

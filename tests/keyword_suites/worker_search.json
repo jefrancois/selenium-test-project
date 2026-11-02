@@ -1,0 +1,11 @@
+[
+  {
+    "id": "public_search_workers_form_is_visible",
+    "description": "La page /travailleurs expose un formulaire de recherche de travailleurs.",
+    "steps": [
+      {"keyword": "open_page", "page": "WorkersPage"},
+      {"keyword": "assert_current_path", "path": "/travailleurs"},
+      {"keyword": "assert_search_form_visible"}
+    ]
+  }
+]

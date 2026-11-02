@@ -1,0 +1,13 @@
+[
+  {
+    "id": "worker_opens_new_request_wizard",
+    "description": "Depuis 'Mes demandes', le bouton 'Nouvelle demande' ouvre l'etape 1 (choix du service) sans rien publier.",
+    "steps": [
+      {"keyword": "log_in", "email": "${USER_EMAIL}", "password": "${USER_PASSWORD}"},
+      {"keyword": "open_page", "page": "WorkerRequestsPage"},
+      {"keyword": "assert_heading_contains", "text": "Mes demandes"},
+      {"keyword": "open_new_request_wizard"},
+      {"keyword": "assert_service_step_visible"}
+    ]
+  }
+]

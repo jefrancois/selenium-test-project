@@ -27,6 +27,7 @@ from framework.pages.worker_pages import (
     WorkerPayoutsPage,
     WorkerPlanPage,
     WorkerProfilePage,
+    WorkerRequestsPage,
     WorkerSearchPage,
 )
 
@@ -37,7 +38,7 @@ PAGE_REGISTRY: dict[str, type[BasePage]] = {
         SearchPage, WorkersPage, LoginPage, RegisterPage,
         WorkerDashboardPage, WorkerSearchPage, WorkerMessagesPage, WorkerProfilePage,
         WorkerPayoutsPage, WorkerBillingPage, WorkerPlanPage, WorkerNotificationsPage,
-        AnnualStatementPage,
+        AnnualStatementPage, WorkerRequestsPage,
     )
 }
 

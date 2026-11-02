@@ -68,11 +68,3 @@ rapport HTML, meme capture d'ecran automatique que les tests Python).
   locator ici). Aucune autre modification n'est necessaire.
 - Cette couche complete les tests Python, elle ne les remplace pas : les tests
   `tests/test_*.py` restent la reference pour la couverture technique fine.
-
-## Tests de performance
-
-Charge HTTP (Locust) sur les pages publiques, independante de la suite Selenium.
-Voir [`performance/README.md`](performance/README.md) pour les precautions (le
-site est heberge sur Vercel, pas dimensionne pour la charge) et
-[`performance/run_history.py`](performance/run_history.py) pour lancer un test et
-l'ajouter a l'historique compare dans `performance/reports/history/comparison.html`.
